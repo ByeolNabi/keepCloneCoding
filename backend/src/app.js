@@ -1,3 +1,5 @@
+const{ Note } = require("./model"); // model 경로에 있는 index.js에 모듈을 매핑해두면 편하게 import할 수 있다. 
+
 const express = require("express");
 const cors = require("cors");
 const morgan = require("morgan");
@@ -33,7 +35,7 @@ app.use((error, req, res, next) => {
     msg: "서버 내부에서 문제가 발생하였습니다.",
   });
 });
-//
+
 const PORT = 3000;
 app.listen(PORT, () => {
   console.log(`API 서버가 ${PORT}에서 요청을 기다리고 있습니다.`);
