@@ -24,3 +24,34 @@ router.get(":/id", (req, res) =>{
     // 배열 형식으로 반환
     res.json(note);
 })
+
+router.post("/", (req,res) => {
+    const { title, body, pinned, backgroundColor } = req.body;
+    
+    // 새로운 노트 생성
+    const note = new Note(title, body, {
+        pinned: pinned !== undefined ? pinned : false,
+        backgroundColor:
+            backgroundColor !== undefined ? backgroundColor : "#FFFFFF",
+    });
+
+    // 새로운 노트를 목록에 추가
+    store.notes.set(note.id, note);
+    console.log(store.notes.get(note.id));
+
+    res.status(201).json(note);
+})
+
+// http put : 기준 노트 수정
+router.put("/api/notes/:id", (req,res) => {
+    const { id } = req.params;
+    const { title, body, pinned, backgroundColor } = req.body;
+
+    const targetNote = store.notes.get(id);
+
+    targetNote.title = title !== undefined ? title : targetNote.title;
+    targetNote.body = body != undefined ? body : targetNote.body;
+    targetNote.pinned = pinned !== undefined ? pinned : targetNote.pinned;
+    targetNote.backgroundColor = backgroundColor !== undefined ? backgroundColor : targetNote.backgroundColor;
+    targetNote.updateAt = Math.floor(Date.now() / 1000);
+})
