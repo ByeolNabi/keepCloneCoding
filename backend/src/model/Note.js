@@ -1,5 +1,4 @@
 // 데이터의 형태 Model
-
 const { v4: uuidv4 } = require("uuid");
 
 class Note{
@@ -15,4 +14,4 @@ class Note{
     }
 }
 
-module.exports = Notes;
+module.exports = Note;

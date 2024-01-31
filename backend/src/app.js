@@ -1,9 +1,10 @@
 const{ Note } = require("./model"); // model 경로에 있는 index.js에 모듈을 매핑해두면 편하게 import할 수 있다. 
-
 const express = require("express");
 const cors = require("cors");
 const morgan = require("morgan");
-const mothodOverride = require("method-override");
+const methodOverride = require("method-override");
+// api를 require한다.
+const api = require("./api");
 
 const app = express();
 
@@ -14,7 +15,8 @@ app.use(methodOverride());
 app.use(express.json());
 // http요청이 서버로 들어올때마다 로그를 출력해줌
 app.use(morgan("dev"));
-
+// path를 이용하기...?
+app.use("/api",api);
 // 미들웨어...?
 app.use((req, res, next) => {
   // next함수는 다음 미들웨어로 순서를 넘깁니다.
