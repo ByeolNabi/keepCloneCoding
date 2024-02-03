@@ -8,9 +8,34 @@
 <body>
     <!-- 메인 레이아웃 -->
     <main>
+        <img id="mainBanner" src="https://ojsfile.ohmynews.com/STD_IMG_FILE/2015/1016/IE001882086_STD.jpg">
         <div id="newNoteBar">
             <input type="text" placeholder="노트 작성..."/>
         </div>
+
+    <!-- 핀 노트 -->
+    <section id="pinnedNoteList" class="notes-section">
+        <div class="section-header">핀 노트</div>
+        <div class="note-container">
+            <div class="note">
+                <div class="note-title"></div>
+                <div class="note-body"></div>
+                <div class="note-footer">
+                    <button class="pin"></button>
+                    <button class="color-select"></button>
+                    <button class="delete"></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 노트 -->
+    <section id="noteList">
+        <div class="section-header">노트</div>
+        <div class="note-container"></div>
+        
+    </section>
+
     </main>
     <!-- 푸터 -->
     <footer></footer>
