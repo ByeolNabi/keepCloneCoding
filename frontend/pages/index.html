@@ -1,81 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
     <title>나의 노트</title>
-</head>
-<body>
+  </head>
+  <body>
     <!-- 메인 레이아웃 -->
     <main>
-        <img id="mainBanner" src="https://ojsfile.ohmynews.com/STD_IMG_FILE/2015/1016/IE001882086_STD.jpg">
-        <div id="newNoteBar">
-            <input type="text" placeholder="노트 작성..."/>
-        </div>
+      <img
+        id="mainBanner"
+        src="https://ojsfile.ohmynews.com/STD_IMG_FILE/2015/1016/IE001882086_STD.jpg"
+        alt="메인 베너"
+      />
+      <div id="newNoteBar">
+        <input type="text" placeholder="노트 작성..." />
+      </div>
 
-    <!-- 핀 노트 -->
-    <section id="pinnedNoteList" class="notes-section">
+      <div id="emptyNotes">
+        <img src="/resources/img/empty_icon.png" alt="노트 없음" />
+        <div>추가한 메모가 여기에 표시됩니다.</div>
+      </div>
+
+      <!-- 핀 노트 -->
+      <section id="pinnedNoteList" class="notes-section">
         <div class="section-header">핀 노트</div>
         <div class="note-container">
-
-            <!-- 핀 된 노트 예시 -->
-            <div class="note">
-                <div class="note-title">노트 제목</div>
-                <div class="note-body">노트 내용</div>
-                <div class="note-footer">
-                    <button class="pin">
-                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1">
-                            push_pin
-                            </span>
-                    </button>
-                    <button class="color-select">
-                        <span class="material-symbols-outlined">
-                            palette
-                            </span>
-                    </button>
-                    <button class="delete">
-                        <span class="material-symbols-outlined">
-                            delete
-                            </span>
-                    </button>
-                </div>
+          <!-- 핀 된 노트 예시 -->
+          <div class="note">
+            <div class="note-title">노트 제목</div>
+            <div class="note-body">노트 내용</div>
+            <div class="note-footer">
+              <button class="pin">
+                <span
+                  class="material-symbols-outlined"
+                  style="font-variation-settings: 'FILL' 1"
+                >
+                  push_pin
+                </span>
+              </button>
+              <button class="color-select">
+                <span class="material-symbols-outlined"> palette </span>
+              </button>
+              <button class="delete">
+                <span class="material-symbols-outlined"> delete </span>
+              </button>
             </div>
+          </div>
         </div>
-    </section>
+      </section>
 
-    <!-- 노트 -->
-    <section id="noteList">
+      <!-- 노트 -->
+      <section id="noteList">
         <div class="section-header">노트</div>
         <div class="note-container">
-            <!-- 핀 된 노트 예시 -->
-            <div class="note">
-                <div class="note-title">노트 제목</div>
-                <div class="note-body">노트 내용</div>
-                <div class="note-footer">
-                    <button class="pin">
-                        <span class="material-symbols-outlined">
-                            push_pin
-                            </span>
-                    </button>
-                    <button class="color-select">
-                        <span class="material-symbols-outlined">
-                            palette
-                            </span>
-                    </button>
-                    <button class="delete">
-                        <span class="material-symbols-outlined">
-                            delete
-                            </span>
-                    </button>
-                </div>
+          <!-- 핀 된 노트 예시 -->
+          <div class="note">
+            <div class="note-title">노트 제목</div>
+            <div class="note-body">노트 내용</div>
+            <div class="note-footer">
+              <button class="pin">
+                <span class="material-symbols-outlined"> push_pin </span>
+              </button>
+              <button class="color-select">
+                <span class="material-symbols-outlined"> palette </span>
+              </button>
+              <button class="delete">
+                <span class="material-symbols-outlined"> delete </span>
+              </button>
             </div>
+          </div>
         </div>
-        
-    </section>
-
+      </section>
     </main>
     <!-- 푸터 -->
-    <footer></footer>
-</body>
+    <footer>created by narwahl_blast</footer>
+
+    <!-- 모달 레이아웃 -->
+    <div id="modalLayout" class="hide"></div>
+
+    <!-- 모달 본체 -->
+    <div id="modalWrapper" calss="hide">
+      <div class="modal-container">
+        <div class="note-content">
+          <input type="text" class="note-title-input" placeholder="제목" />
+          <textarea class="note-body-input"></textarea>
+        </div>
+        <div class="note-footer">
+          <div>
+            <button class="pin">
+              <span class="material-symbols-outlined"> push_pin </span>
+            </button>
+            <button class="color-select">
+              <span class="material-symbols-outlined"> palette </span>
+            </button>
+            <button class="delete">
+              <span class="material-symbols-outlined"> delete </span>
+            </button>
+          </div>
+          <button>닫기</button>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>
