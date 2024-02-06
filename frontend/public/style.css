@@ -1,0 +1,66 @@
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+footer{
+    height: 48px;
+    width: 100%;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    line-height: 48px;
+    text-align: center;
+    font-weight: 100;
+    font-size: 14px;
+}
+
+#mainBanner {
+    width: 560px;
+}
+
+#emptyNotes{
+    margin-top: 48px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#emptyNotes > img{
+    width: 240px;
+}
+
+#modalLayout{
+    position:fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    opacity: 0.75;
+    background-color: #202124;
+    z-index: 4000;
+}
+
+#modalWrapper{
+    background-color: transparent;
+    padding: 16px;
+    position: fixed;
+    z-index: 4001;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -15%);
+}
+
+.modal-container{
+    width: 520px;
+    position: relative;
+    border-radius: 8px;
+    background-color: white;
+    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 60%), 0 4px 8px 3px rgb(0 0 0 / 30%);
+}
+
+.modal-container > .note-content{
+    max-height: 800px;
+    overflow-y: auto;
+}
