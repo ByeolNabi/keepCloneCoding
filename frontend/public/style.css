@@ -1,3 +1,22 @@
+.material-symbols.md-16,
+.material-symbols-outline.md-16{
+    font-size: 16px;
+}
+
+.material-symbols.md-18,
+.material-symbols-outlined.md-18{
+    font-size: 18px;
+}
+
+.material-symbols.gray,
+.material-symbols-outlined.gray{
+    color: rgb(84,84,84);
+}
+
+.hide{
+    display: none !important;
+}
+
 main {
     display: flex;
     flex-direction: column;
@@ -63,4 +82,138 @@ footer{
 .modal-container > .note-content{
     max-height: 800px;
     overflow-y: auto;
+}
+
+.note-title-input{
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 24px;
+    padding: 16px 16px 8px 16px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    border: none;
+    background-color: transparent;
+}
+
+.note-body-input {
+    height: 300px;
+    line-height: 22px;
+    padding: 0px 16px 16px 16px;
+    border: none;
+    overflow: scroll;
+    resize: none;
+    background-color: transparent;
+}
+
+.modal-container > .note-content > .note-title-input,
+.modal-container > .note-content > .note-body-input{
+    display: block;
+    outline: none;
+    width: calc(100% - 32px);
+}
+
+.note-footer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 16px;
+}
+
+.note button,
+.modal-container button {
+    background-color: transparent;
+    border-radius: 4px;
+    border: none;
+    padding: 8px 12px 4px 12px;
+}
+
+.note button:hover,
+div.color-select:hover,
+.modal-container button:hover {
+    background-color: rgba(0,0,0,0.1);
+}
+
+.note button:active,
+div.color-select:active,
+.modal-container button:active{
+    background-color: rgba(0,0,0,0.2);
+}
+
+#newNoteBar{
+    border: 1.5px solid #cdcee1;
+    border-radius: 5px;
+    margin-bottom: 32px;
+    padding: 16px;
+    width: 560px;
+    cursor: text;
+}
+
+#newNoteBar > input{
+    outline: none;
+    width: 100%;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 24px;
+    border: none;
+    padding: 0px;
+}
+
+.notes-section{
+    width: 1080px;
+    margin-bottom: 32px;
+}
+
+.notes-section > .section-header{
+    color: gray;
+    font-weight: bold;
+    margin: 8px 4px;
+}
+
+.note{
+    width: 240px;
+    margin: 8px;
+    border: 1.5px solid #cbcee1;
+    border-radius: 8px;
+}
+
+.note:hover{
+    box-shadow: 0 2px 8px 0 rgba(0,0,0,0.3);
+}
+
+.note > .note-title{
+    font-size: 16px;
+    font-weight: bold;
+    padding: 16px 16px 8px 16px;
+    word-break: break-all;
+}
+
+.note > .note-body{
+    padding: 0px 16px 8px 16px;
+    word-break: break-all;
+    max-height: 240px;
+    overflow-y: hidden;
+}
+
+.flex-start{
+    justify-content: flex-start;
+}
+
+.note-footer div.color-select{
+    position: relative;
+    padding: 8px 12px 4px 12px;
+    border-radius: 4px;
+}
+
+.note-footer button.color-select > input{
+    position: absolute;
+    opacity: 0;
+    width: 18px;
+    height: 18px;
+    margin: 0;
+    padding: 0;
+}
+
+.modal-container .note-footer > div{
+    display: flex;
+    align-items: center;
 }

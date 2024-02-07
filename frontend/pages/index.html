@@ -22,7 +22,7 @@
         <input type="text" placeholder="노트 작성..." />
       </div>
 
-      <div id="emptyNotes">
+      <div id="emptyNotes" class="hide">
         <img src="/resources/img/empty_icon.png" alt="노트 없음" />
         <strong>추가한 메모가 여기에 표시됩니다.</strong>
       </div>
@@ -35,7 +35,7 @@
           <div class="note">
             <div class="note-title">노트 제목</div>
             <div class="note-body">노트 내용</div>
-            <div class="note-footer">
+            <div class="note-footer flex-start">
               <button class="pin">
                 <span
                   class="material-symbols-outlined"
@@ -45,10 +45,11 @@
                 </span>
               </button>
               <button class="color-select">
-                <span class="material-symbols-outlined"> palette </span>
+                <input class="color-picker" type="color" />
+                <span class="material-symbols-outlined md-18 gray"> palette </span>
               </button>
               <button class="delete">
-                <span class="material-symbols-outlined"> delete </span>
+                <span class="material-symbols-outlined md-18 gray"> delete </span>
               </button>
             </div>
           </div>
@@ -56,22 +57,23 @@
       </section>
 
       <!-- 노트 -->
-      <section id="noteList">
+      <section id="noteList" class="notes-section">
         <div class="section-header">노트</div>
         <div class="note-container">
           <!-- 핀 된 노트 예시 -->
           <div class="note">
             <div class="note-title">노트 제목</div>
             <div class="note-body">노트 내용</div>
-            <div class="note-footer">
+            <div class="note-footer flex flex-start">
               <button class="pin">
-                <span class="material-symbols-outlined"> push_pin </span>
+                <span class="material-symbols-outlined md-18 gray"> push_pin </span>
               </button>
               <button class="color-select">
-                <span class="material-symbols-outlined"> palette </span>
+                <input class="color-picker" type="color" />
+                <span class="material-symbols-outlined md-18 gray"> palette </span>
               </button>
               <button class="delete">
-                <span class="material-symbols-outlined"> delete </span>
+                <span class="material-symbols-outlined md-18 gray"> delete </span>
               </button>
             </div>
           </div>
@@ -82,10 +84,10 @@
     <footer>created by narwahl_blast</footer>
 
     <!-- 모달 레이아웃 -->
-    <div id="modalLayout" class="hide"></div>
+    <div id="modalLayout" class=""></div>
 
     <!-- 모달 본체 -->
-    <div id="modalWrapper" calss="hide">
+    <div id="modalWrapper" class="">
       <div class="modal-container">
         <div class="note-content">
           <input type="text" class="note-title-input" placeholder="제목" />
@@ -94,13 +96,14 @@
         <div class="note-footer">
           <div>
             <button class="pin">
-              <span class="material-symbols-outlined"> push_pin </span>
+              <span class="material-symbols-outlined md-18 gray"> push_pin </span>
             </button>
             <button class="color-select">
-              <span class="material-symbols-outlined"> palette </span>
+              <input class="color-picker" type="color" />
+              <span class="material-symbols-outlined md-18 gray"> palette </span>
             </button>
             <button class="delete">
-              <span class="material-symbols-outlined"> delete </span>
+              <span class="material-symbols-outlined md-18 gray"> delete </span>
             </button>
           </div>
           <button>닫기</button>
