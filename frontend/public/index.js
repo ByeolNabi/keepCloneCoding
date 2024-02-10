@@ -35,8 +35,19 @@ const noteService = {
         return data;
     },
     // 기존 노트 수정
-    updateNote: async function(){
-
+    // note: { title, body, pinned, backgroundColor }
+    updateNote: async function(noteId, note){
+        const data = await fetch(`http://${HOST}:${PORT}/api/notes/${noteId}`,{
+            method:"PUT",
+            mode: "cors",
+            cache: "no-cache",
+            headers:{
+                "Content-Type": "appication/json",
+            },
+            body: JSON.stringify(note),
+        }).then(statusCodeHandler);
+        console.info(`노트 ${noteId}가 수정되었습니다.`);
+        return data;
     },
     // 기존 노트 삭제
     deleteNote: async function(){
