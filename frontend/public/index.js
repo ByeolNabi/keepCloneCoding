@@ -31,7 +31,7 @@ const noteService = {
             },
             body: JSON.stringify(note),
         }).then(statusCodeHandler);
-        console.info(`'${note.title}' 노트가 생성되었습니다.(ID: ${data.id})`);
+        console.info(`노트 ${data.id}가 생성되었습니다.`);
         return data;
     },
     // 기존 노트 수정
@@ -51,6 +51,14 @@ const noteService = {
     },
     // 기존 노트 삭제
     deleteNote: async function(){
-
-    }
+        const data = await fetch(`https://${HOST}:${PORT}/api/notes/${noteId}`,{
+            method: "PUT",
+            mode: "cors",
+            cache:"no-cache",
+            headers: {
+                "Content-Type" : "appication/json",
+            },
+        }).then(statusCodeHandler);
+        console.info(`노트 ${noteId}가 삭제되었습니다.`)
+    },
 }
