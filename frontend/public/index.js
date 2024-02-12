@@ -50,6 +50,7 @@ const noteService = {
         return data;
     },
     // 기존 노트 삭제
+    // note: { title, body, pinned, backgroundColor }
     deleteNote: async function(){
         const data = await fetch(`https://${HOST}:${PORT}/api/notes/${noteId}`,{
             method: "PUT",
