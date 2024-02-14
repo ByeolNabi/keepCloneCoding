@@ -85,148 +85,270 @@ class addNoteBar {
   }
 }
 
-class EmptyNotePlaceholder{
-    constructor({}){
-        this.elements = {
-            container: document.getElementById("emptyNotes"),
-        };
-    }
-
-    show() {
-        this.elements.container.className = ""; // class를 덮어씌움
+class EmptyNotePlaceholder {
+  constructor({}) {
+    this.elements = {
+      container: document.getElementById("emptyNotes"),
     };
+  }
 
-    hide(){
-        this.elements.container.className = "hide";
-    }
+  show() {
+    this.elements.container.className = ""; // class를 덮어씌움
+  }
+
+  hide() {
+    this.elements.container.className = "hide";
+  }
 }
 
 class Modal {
-    constructor({}){
-        this.elements = {
-            modalLayout: document.getElementById("modalLayout"),
-            modalWrapper: document.getElementById("modalWrapper"),
-            modalContainer: document.querySelector("#modalWrapper > div.modal-container"),
-            modalTitleInput: document.querySelector("#modalWrapper > div.modal-container > div.note-content > textarea.note-title-input"),
-            modalBodyInput: document.querySelector("#modalWrapper > div.modal-container > div.note-content > textarea.note-body-input"),
-            modalFooterPinButton: document.querySelector("#modalWrapper > div.modal-container > div.note-footer > div > button.pin"),
-            modalFooterPinIcon: document.querySelector("#modalWrapper > div.modal-container > div.note-footer > div > button.pin > span"),
-            modalFooterColorSelectButton : document.querySelector("#modalWrapper > div.modal-container > div.note-footer > div > div.color-select > span"),
-            modalFooterColorSelectInput: document.querySelector("#modalWrapper > div.modal-container > div.note-footer > div > div.color-select > input"),
-            modalFooterColorSelectIcon : document.querySelector("#modalWrapper > div.modal-container > div.note-footer > div > div.color-select > span"),
-            modalFooterDeleteButton : document.querySelector("#modalWrapper > div.modal-container > div.note-footer > div > button.delete"),
-            modalFooterDeleteIcon : document.querySelector("#modalWrapper > div.modal-container > div.note-footer > div > button.delete > span"),
-            modalFooterCloseButton : document.querySelector("#modalWrapper > div.modal-container > div.note-footer > button.close"),
-        };
+  constructor({}) {
+    this.elements = {
+      modalLayout: document.getElementById("modalLayout"),
+      modalWrapper: document.getElementById("modalWrapper"),
+      modalContainer: document.querySelector(
+        "#modalWrapper > div.modal-container"
+      ),
+      modalTitleInput: document.querySelector(
+        "#modalWrapper > div.modal-container > div.note-content > textarea.note-title-input"
+      ),
+      modalBodyInput: document.querySelector(
+        "#modalWrapper > div.modal-container > div.note-content > textarea.note-body-input"
+      ),
+      modalFooterPinButton: document.querySelector(
+        "#modalWrapper > div.modal-container > div.note-footer > div > button.pin"
+      ),
+      modalFooterPinIcon: document.querySelector(
+        "#modalWrapper > div.modal-container > div.note-footer > div > button.pin > span"
+      ),
+      modalFooterColorSelectButton: document.querySelector(
+        "#modalWrapper > div.modal-container > div.note-footer > div > div.color-select > span"
+      ),
+      modalFooterColorSelectInput: document.querySelector(
+        "#modalWrapper > div.modal-container > div.note-footer > div > div.color-select > input"
+      ),
+      modalFooterColorSelectIcon: document.querySelector(
+        "#modalWrapper > div.modal-container > div.note-footer > div > div.color-select > span"
+      ),
+      modalFooterDeleteButton: document.querySelector(
+        "#modalWrapper > div.modal-container > div.note-footer > div > button.delete"
+      ),
+      modalFooterDeleteIcon: document.querySelector(
+        "#modalWrapper > div.modal-container > div.note-footer > div > button.delete > span"
+      ),
+      modalFooterCloseButton: document.querySelector(
+        "#modalWrapper > div.modal-container > div.note-footer > button.close"
+      ),
+    };
 
-        const that = this;
-        this.elements.modalLayout.addEventListener("click", function(){
-            that.close()
-        });
+    const that = this;
+    this.elements.modalLayout.addEventListener("click", function () {
+      that.close();
+    });
 
-        this.elements.modalTitleInput.addEventListener("input", function(event){
-            that.setTitle(event.target.value);
-        });
+    this.elements.modalTitleInput.addEventListener("input", function (event) {
+      that.setTitle(event.target.value);
+    });
 
-        this.elements.modalBodyInput.addEventListener("input", function(event){
-            that.setBody(event.target.value);
-        });
+    this.elements.modalBodyInput.addEventListener("input", function (event) {
+      that.setBody(event.target.value);
+    });
 
-        this.elements.modalFooterPinButton.addEventListener("click", function(){
-            that.setPin(!that.pinned);
-        });
+    this.elements.modalFooterPinButton.addEventListener("click", function () {
+      that.setPin(!that.pinned);
+    });
 
-        this.elements.modalFooterColorSelectButton.addEventListener(
-            "click",
-            function (event){
-                event.stopPropagation();
-                this.firstElementChild.click;
-            }
-        )
+    this.elements.modalFooterColorSelectButton.addEventListener(
+      "click",
+      function (event) {
+        event.stopPropagation();
+        this.firstElementChild.click;
+      }
+    );
 
-        this.elements.modalFooterColorSelectIcon.addEventListener("input", function(event){
-            const color = event.target.value;
-            that.setBackgroundColor(color);
-        });
+    this.elements.modalFooterColorSelectIcon.addEventListener(
+      "input",
+      function (event) {
+        const color = event.target.value;
+        that.setBackgroundColor(color);
+      }
+    );
 
-        this.elements.modalFooterDeleteButton.addEventListener("click", async function(){
-            await noteService.deleteNote(that.id);
-            that.close();
-        });
+    this.elements.modalFooterDeleteButton.addEventListener(
+      "click",
+      async function () {
+        await noteService.deleteNote(that.id);
+        that.close();
+      }
+    );
 
-        that.elements.modalFooterCloseButton.addEventListener("click",function(){
-            that.close;
-        });
+    that.elements.modalFooterCloseButton.addEventListener("click", function () {
+      that.close;
+    });
 
-        this.setNoteId();
-        this.setTitle();
-        this.setBody();
-        this.setPin();
-        this.setBackgroundColor();
+    this.setNoteId();
+    this.setTitle();
+    this.setBody();
+    this.setPin();
+    this.setBackgroundColor();
 
-        this.closeHandler();
+    this.closeHandler();
+  }
+
+  open() {
+    this.elements.modalWrapper.className = "";
+    this.elements.modalLayout.className = "";
+    this.elements.modalTitleInput.focus();
+
+    if (this.id === null || this.id === undefined) {
+      this.elements.modalFooterDeleteButton.computedStyleMap.display = "none";
+    } else {
+      this.elements.modalFooterDeleteButton.computedStyleMap.display = "block";
     }
+  }
 
-    open(){
-        this.elements.modalWrapper.className = "";
-        this.elements.modalLayout.className = "";
-        this.elements.modalTitleInput.focus();
+  close() {
+    const obj = {
+      id: this.id,
+      title: this.title,
+      body: this.body,
+      pinned: this.pinned,
+      backgroundColor: this.backgroundColor,
+    };
 
-        if(this.id === null || this.id === undefined){
-            this.elements.modalFooterDeleteButton.computedStyleMap.display = "none";
-        } else {
-            this.elements.modalFooterDeleteButton.computedStyleMap.display = "block";
-        }
+    this.elements.modalWrapper.className = "hide";
+    this.elements.modalLayout.className = "hide";
+
+    this.setNoteId();
+    this.setTitle();
+    this.setBody();
+    this.setPin();
+    this.setBackgroundColor();
+
+    this.closeHandler();
+  }
+
+  setNoteId(id) {
+    this.id = id != undefined ? id : null;
+  }
+
+  setTitle(title) {
+    this.title = title !== undefined ? title : "";
+    this.elements.modalTitleInput.value = this.title;
+  }
+
+  setBody(body) {
+    this.body = body !== undefined ? body : "";
+    this.elements.modalTitleInput.value = this.body;
+  }
+
+  setPin(pinned) {
+    this.pinned = pinned !== undefined ? pinned : false;
+    if (this.pinned) {
+      this.elements.modalFooterPinIcon.className =
+        "material-symbols md-18 gray";
+    } else {
+      this.elements.modalFooterPinIcon.className =
+        "material-symbols-outlined md-18 gray";
     }
+  }
 
-    close(){
-        const obj = {
-            id: this.id,
-            title: this.title,
-            body: this.body,
-            pinned: this.pinned,
-            backgroundColor: this.backgroundColor,
-        };
-
-        this.elements.modalWrapper.className = "hide";
-        this.elements.modalLayout.className = "hide";
-
-        this.setNoteId();
-        this.setTitle();
-        this.setBody();
-        this.setPin();
-        this.setBackgroundColor();
-
-        this.closeHandler();
-        
-    }
-
-    setNoteId(id){
-        this.id = id!=undefined ? id : null;
-    }
-
-    setTitle(title){
-        this.title = title !== undefined ? title : "";
-        this.elements.modalTitleInput.value = this.title;
-    }
-
-    setBody(body){
-        this.body = body !== undefined ? body : "";
-        this.elements.modalTitleInput.value = this.body;
-    }
-
-    setPin(pinned){
-        this.pinned = pinned !== undefined ? pinned : false;
-        if (this.pinned){
-            this.elements.modalFooterPinIcon.className = "material-symbols md-18 gray";
-        }else{
-            this.elements.modalFooterPinIcon.className = "material-symbols-outlined md-18 gray";
-        }
-    }
-
-    setBackgroundColor(color){
-        this.backgroundColor = color !== undefined ? color : "#FFFFFF";
-        this.elements.modalContainer.style.backgroundColor = this.backgroundColor;
-    }
+  setBackgroundColor(color) {
+    this.backgroundColor = color !== undefined ? color : "#FFFFFF";
+    this.elements.modalContainer.style.backgroundColor = this.backgroundColor;
+  }
 }
 
+class Note {
+  constructor({
+    id,
+    title,
+    body,
+    createdAt,
+    udpatedAt,
+    pinned,
+    backgroundColor,
+    onClickNote,
+    onClickPin,
+    onChangeBackgoundColor,
+    onClickDelete,
+  }) {
+    this.elements;
+  }
+
+  // 노트 컴포넌트 UI 생성
+  _createNoteElements(
+    id,
+    title,
+    
+  ) {
+    const noteContainer = document.createElement("div");
+    noteContainer.className = "note";
+    noteContainer.id = id;
+
+    const noteTitle = document.createElement("div");
+    noteTitle.className = "note-title";
+    if (title != undefined && title !== null) {
+      noteTitle.textContent = title;
+    }
+
+    const noteBody = document.createElement("div");
+    noteBody.className = "note-body";
+    if (body !== undefined && body !== null) {
+      noteBody.textContent = body.replace(/(?:\r\n|\r|\n)/g, "<br>");
+    }
+
+    const noteFooter = document.createElement("div");
+    noteFooter.className = "note-footer flex-start";
+
+    const pinButton = document.createElement("button");
+    pinButton.className = "pin";
+
+    const pinButtonIcon = document.createElement("span");
+    pinButton.className = pinned
+      ? "material-symbols md-18 gray"
+      : "material-symbols-outlined md-18 gray";
+    pinButtonIcon.textContent = "push_pin";
+
+    const colorSelectButton = document.createElement("div");
+    colorSelectButton.className = "color-select";
+    colorSelectButton.addEventListener("click", function (event) {
+      event.stopPropagation();
+      this.firstElementChild.click();
+    });
+
+    const colorSelectInput = document.createElement("input");
+    colorSelectInput.className = "color-picker";
+    colorSelectInput.type = "color";
+
+    const colorSelectButtonIcon = document.createElement("span");
+    colorSelectButtonIcon.className = "material-icons-outlined md-18 gray";
+    colorSelectButtonIcon.textContent = "palette";
+
+    const deleteButton = document.createElement("button");
+    deleteButton.className = "delete";
+
+    const deleteButtonIcon = document.createElement("span");
+    deleteButtonIcon.className = "material-icons-outluned md-18 gray";
+    deleteButtonIcon.textContent = "delete";
+
+    deleteButton.append(deleteButtonIcon);
+    colorSelectButton.append(colorSelectInput);
+    colorSelectButton.append(colorSelectButtonIcon);
+    pinButton.append(pinButtonIcon);
+
+    noteFooter.append(pinButton,colorSelectButton,deleteButton);
+
+    noteContainer.append(noteTitle, noteBody, noteFooter);
+
+    return {
+        noteContainer,
+        noteTitle,
+        noteBody,
+        pinButton,
+        pinButtonIcon,
+        colorSelectButton,
+        deleteButton,
+    }
+  }
+}
